@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -16,11 +16,26 @@ def index_page():
 
 
 @app.route("/application-form")
-def application_form():
+def submit_application():
     """Show the application form page."""
 
     return render_template("application-form.html")
 
+
+@app.route("/application", methods=["POST"])
+def receive_application():
+    """Handle form submission and return response"""
+
+    first_name = request.form.get("firstname")
+    last_name = request.form.get("lastname")
+    salary = request.form.get("salary")
+    job_title = request.form.get("position")
+
+    return render_template("application-response.html",
+                            first_name=first_name,
+                            last_name=last_name,
+                            salary=salary,
+                            job_title=job_title)
 
 if __name__ == "__main__":
     app.run(debug=True)
