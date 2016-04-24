@@ -1,1 +1,14 @@
-/* Your styles can go here. */
+/* Your CSS goes here */
+form input {
+    background-color: #FFFC83;
+}
+
+/* Not sure why Sublime giving warning message "Don't use IDS in selectors" */
+#field-lastname {
+    font-weight: bold;
+}
+
+#instructions {
+    border: 2px solid #000000;
+    padding: 5px;
+}
